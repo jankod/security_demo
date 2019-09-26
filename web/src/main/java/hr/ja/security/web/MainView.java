@@ -15,11 +15,11 @@ import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 
-@Route
+@Route	
 public class MainView extends VerticalLayout {
 
     public MainView() {
-        H1 heading = new H1("Ovo je h1 janko");
+        H1 heading = new H1("Ovo je h1 markoi");
 
         Label greeting = new Label("label neki");
 
