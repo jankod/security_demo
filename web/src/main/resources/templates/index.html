@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+</head>
+<body>index
+</body>
+
+<p>
+    <a href="/logout">logout</a>
+</p>
+<p>
+    <a href="/web1">web 1</a>
+</p>
+
+<br>
+
+<div sec:authorize="isAuthenticated()">This content is only shown
+    to authenticated users.
+</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">This content is only
+    shown to administrators.
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">This content is only
+    shown to users.
+</div>
+<br> Authenticated username:<span sec:authentication="name"></span>
+
+<!--Authenticated user roles:-->
+<!--<div sec:authentication="principal.authorities"></div>-->
+</html>

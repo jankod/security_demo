@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+</head>
+<body>Ovo je web 1 page</body>
+<p>
+    <a href="/logout">logout</a>
+</p>
+
+<p>
+    <a href="/">Home</a>
+</p>
+User name: <span sec:authentication="name"></span>
+</html>

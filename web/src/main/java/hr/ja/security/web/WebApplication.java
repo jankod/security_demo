@@ -14,8 +14,5 @@ public class WebApplication extends SpringBootServletInitializer {
 		SpringApplication.run(WebApplication.class, args);
 	}
 
-//	@Bean
-//	public KeycloakConfigResolver KeycloakConfigResolver() {
-//		return new KeycloakSpringBootConfigResolver();
-//	}
+
 }
