@@ -13,14 +13,14 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 @Primary
 public class MyKeycloakSpringBootConfigResolver extends KeycloakSpringBootConfigResolver {
-	private final KeycloakDeployment keycloakDeployment;
+    private final KeycloakDeployment keycloakDeployment;
 
-	public MyKeycloakSpringBootConfigResolver(KeycloakSpringBootProperties properties) {
-		keycloakDeployment = KeycloakDeploymentBuilder.build(properties);
-	}
+    public MyKeycloakSpringBootConfigResolver(KeycloakSpringBootProperties properties) {
+        keycloakDeployment = KeycloakDeploymentBuilder.build(properties);
+    }
 
-	@Override
-	public KeycloakDeployment resolve(HttpFacade.Request facade) {
-		return keycloakDeployment;
-	}
+    @Override
+    public KeycloakDeployment resolve(HttpFacade.Request facade) {
+        return keycloakDeployment;
+    }
 }
