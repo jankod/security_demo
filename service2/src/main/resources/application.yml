@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8086
 
 spring:
   main:
@@ -8,11 +8,9 @@ spring:
 keycloak:
   realm: demo_realm
   #  the client-id of the application, required;
-  resource: service1
+  resource: service2
   auth-server-url: http://127.0.0.1:8080/auth
-  use-resource-role-mappings: true
+  # use-resource-role-mappings: true
   public-client: false
 
-  principal-attribute: preferred_username
-  credentials:
-    secret: e07a29cf-6685-4a6a-9abd-974db4b78e52
+  principal-attribute: preferred_username  
