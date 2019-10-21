@@ -42,6 +42,7 @@ public class MyWebController {
         return "admin_page1";
     }
 
+    // protected by annotation....in SecurityConfig
     @RequestMapping("/web1")
     public String web1(Principal principal) {
         log.debug("user {}", principal);
