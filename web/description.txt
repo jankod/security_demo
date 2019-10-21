@@ -1,0 +1,9 @@
+
+user  
+	user1:passwd1
+	role WEB	
+
+
+admin 
+	admin1:passwd1
+	role ADMIN
