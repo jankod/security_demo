@@ -17,6 +17,7 @@ public class MyKeycloakSpringBootConfigResolver extends KeycloakSpringBootConfig
 
     public MyKeycloakSpringBootConfigResolver(KeycloakSpringBootProperties properties) {
         keycloakDeployment = KeycloakDeploymentBuilder.build(properties);
+        
     }
 
     @Override

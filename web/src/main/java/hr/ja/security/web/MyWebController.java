@@ -6,6 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.ClientRegistrationPolicyResource;
+import org.keycloak.admin.client.resource.ClientResource;
+import org.keycloak.admin.client.resource.PoliciesResource;
+import org.keycloak.representations.idm.ManagementPermissionReference;
+import org.keycloak.representations.idm.authorization.PolicyRepresentation;
+import org.keycloak.representations.idm.authorization.TimePolicyRepresentation;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +38,7 @@ public class MyWebController {
 		try {
 			KeycloakAuthenticationToken principal = (KeycloakAuthenticationToken) principalReal; // (KeycloakAuthenticationToken)
 																									// request.getUserPrincipal();
-
+			
 			String userId = principal.getAccount().getKeycloakSecurityContext().getIdToken().getSubject();
 
 			log.debug("User ID " + userId);
@@ -49,6 +57,20 @@ public class MyWebController {
 	@RequestMapping("/protected_web")
 	public String protectedWeb(Principal principal) {
 		log.debug("user {}", principal);
+		
+		// REST API
+		
+		Keycloak k = Keycloak.getInstance(null, null, null, null);
+		ClientResource client = k.realm("").clients().get("sadsa");
+		ManagementPermissionReference permissions = client.getPermissions();
+		
+		PolicyRepresentation policy = new PolicyRepresentation();
+		
+		PoliciesResource policies = client.authorization().policies();
+		TimePolicyRepresentation representation = new TimePolicyRepresentation();
+		policies.time().create(representation);
+		policies.create(policy);
+		
 		return "protected_web";
 	}
 
