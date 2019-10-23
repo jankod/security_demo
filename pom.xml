@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>org.springframework.security.oauth.boot</groupId>
 			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
-			<version>2.1.8.RELEASE</version>
+			<version>2.2.0.RELEASE</version>
 		</dependency>
 
 	</dependencies>
@@ -75,5 +75,6 @@
 	</dependencyManagement>
 	<modules>
 		<module>web</module>
+		<module>web_premission</module>
 	</modules>
 </project>

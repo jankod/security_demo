@@ -1,19 +1,23 @@
 #spring.main.web-application-type=none
 server:
-  port: 8082
+  port: 8099
+
   error:
     whitelabel:
-      enabled: true
+      enabled: false
 
 keycloak:
-  realm: demo_realm
-  #  the client-id of the application, required;
-  resource: web
+  realm: web_premission_realm
+  resource: web_premission_client
   auth-server-url: http://127.0.0.1:8080/auth
   # use-resource-role-mappings: true
-  public-client: true
-
+  public-client: false
   principal-attribute: preferred_username
+  credentials:
+    secret: ac63dee2-5382-448b-8b02-cfb76011acf7
+  policy-enforcer-config:
+    enforcement-mode: ENFORCING
+
 
 spring:
   main:
@@ -24,4 +28,5 @@ logging:
     org:
       springframework:
         security=DEBUG:
+        
 
