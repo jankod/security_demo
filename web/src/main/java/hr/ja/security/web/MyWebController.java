@@ -42,13 +42,14 @@ public class MyWebController {
 
 		getID(principal);
 
-		List<PermissionTicketRepresentation> premissions = getAuthzClient().protection().permission().find(null, null,
-				null, getKeycloakSecurityContext().getToken().getSubject(), true, true, null, null);
-		log.debug("premissions {}", premissions);
+		try {
+			List<PermissionTicketRepresentation> premissions = getAuthzClient().protection().permission().find(null,
+					null, null, getKeycloakSecurityContext().getToken().getSubject(), true, true, null, null);
+			log.debug("premissions {}", premissions);
+		} catch (Exception e) {
+			log.error("Not find premission {}", e.getMessage());
+		}
 
-		
-		
-		
 		return "index";
 	}
 
@@ -61,20 +62,19 @@ public class MyWebController {
 
 			log.debug("User ID " + userId);
 		} catch (Exception e) {
-			log.error("", e);
+			log.error("Exception ", e.getMessage());
 		}
 	}
 
 	@GetMapping(path = "/logout")
 	public String logout(HttpServletRequest request) throws ServletException {
 		request.logout();
+		// NE RADI
 		return "redirect:/";
 	}
 
 	@Context
 	private HttpServletRequest request;
-
-	
 
 	private AuthzClient getAuthzClient() {
 		return getAuthorizationContext().getClient();
@@ -92,7 +92,6 @@ public class MyWebController {
 	@RequestMapping("/protected_web")
 	public String protectedWeb(Principal principal) {
 		log.debug("user {}", principal);
-
 
 		return "protected_web";
 	}

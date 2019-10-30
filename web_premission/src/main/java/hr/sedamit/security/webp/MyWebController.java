@@ -41,7 +41,7 @@ public class MyWebController {
 
 	@RequestMapping("/")
 	public String home(Principal principal) {
-//		log.debug("user {}", principal);
+		log.debug("user {}", principal);
 
 //		getID(principal);
 
